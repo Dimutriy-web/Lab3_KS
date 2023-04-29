@@ -1,4 +1,4 @@
-#!/bin/script
+#!/bin/bash
 cd /home/grid/testbed/tb325/Lab/vec_samples/src
 ml icc
 arr=("fpu" "vme" "de" "pse" "tsc" "msr" "pae")
