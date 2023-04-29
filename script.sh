@@ -11,3 +11,4 @@ for j in "${arr[@]}"; do
     time ./go-$x1-$x2
   done
 done
+`
