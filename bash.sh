@@ -1,14 +1,9 @@
 #!/bin/bash
-cd /home/grid/testbed/tb325/Lab/vec_samples/src
-ml icc
-arr=("fpu" "vme" "de" "pse" "tsc" "msr" "pae")
-for j in "${arr[@]}"; do
-  for i in {1..3}; do
-    x1=$(date +%M)
-    x2=$(date +%S)
-    icc -O$i -m$j LAB3.cpp -o go-$x1-$x2
-    echo "$j $i:"
-    time ./go-$x1-$x2
-  done
+grep 'flag' /proc/cpuinfo | head -n 1
+
+for i in '-xSSE2' '-xSSE3' '-xAVX' '-O1' '-O2' '-O3'; do
+    cmd="icpc $i -std=c++17 src/LAB3.cpp -o test"
+    echo $cmd
+    eval $cmd
+    time ./test
 done
-`
